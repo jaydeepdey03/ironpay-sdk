@@ -1,8 +1,8 @@
 {
-  "name": "my-library-sdk",
+  "name": "ironpay-sdk",
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/my-library-sdk.js",
+  "main": "dist/assets/main.js",
   "types": "dist/main.d.ts",
   "sideEffects": [
     "**/*.css"
