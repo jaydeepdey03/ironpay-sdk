@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./index.css";
-import { ethers } from "ethers";
+import {ethers} from "ethers";
 import contractABI from "./WIRON_abi.json";
 import merchantABI from "./merchant_abi.json";
 
@@ -8,6 +8,16 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
   amount: Number;
   id: string;
+  product: Product;
+}
+
+interface Product {
+  productId: string;
+  price: Number;
+  name: string;
+  qty: Number;
+  timestamp: string;
+  owner: string;
 }
 
 // function fetchAddressById(id: string) {
@@ -26,8 +36,15 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 //   return address;
 // }
 
-export function IronfishButton({ text, amount, id, ...props }: ButtonProps) {
+export function IronfishButton({
+  text,
+  amount,
+  id,
+  product,
+  ...props
+}: ButtonProps) {
   const [contract, setcontract] = useState<ethers.Contract>();
+  const [merchantContract, setMerchantContract] = useState<ethers.Contract>();
 
   const [ironfishAddress, setIronfishAddress] = useState("");
 
@@ -38,7 +55,7 @@ export function IronfishButton({ text, amount, id, ...props }: ButtonProps) {
     const getContract = async () => {
       if ((window as any).ethereum) {
         const merchantContractAddress =
-          "0x8f5E581Df6B83d8f36Fd1701ce4719524Bc33850";
+          "0xF26aDc0A9c90cdA8c21c267aCC1d3e408F2B8384";
 
         // Access ethereum here
         const ethereum = (window as any).ethereum;
@@ -56,7 +73,7 @@ export function IronfishButton({ text, amount, id, ...props }: ButtonProps) {
           signer
         );
         const address = await merchantContract.getAddressById(id);
-
+        setMerchantContract(merchantContract);
         setIronfishAddress(address);
 
         setcontract(WIRON_Contract);
@@ -73,7 +90,7 @@ export function IronfishButton({ text, amount, id, ...props }: ButtonProps) {
         if ((window as any).ethereum) {
           const ethereum = (window as any).ethereum;
 
-          const accounts = await ethereum.request({ method: "eth_accounts" }); //check if there are accounts connected to the site
+          const accounts = await ethereum.request({method: "eth_accounts"}); //check if there are accounts connected to the site
 
           if (accounts.length !== 0) {
             const account = accounts[0];
@@ -91,24 +108,35 @@ export function IronfishButton({ text, amount, id, ...props }: ButtonProps) {
     checkIfWalletIsConnected();
   }, [currentAccount, contractABI]);
 
-  const transferWIRON = (amount: Number, address: string) => {
+  const transferWIRON = (amount: Number, address: string, product: Product) => {
     console.log(amount, address, "--testing");
-    if ((window as any).ethereum && contract) {
-      contract.transferWithMetadata(
+    if ((window as any).ethereum && contract && merchantContract) {
+      merchantContract.transferWIRON(
         "0x664b8b9892b7560b356ef0f8d44cbd1f6628e388",
         amount,
-        address
+        address,
+        product.productId,
+        product.name,
+        product.price,
+        product.qty
       );
+      console.log("Amount sent");
     }
   };
 
-  const { className, ...restProps } = props;
+  const {className, ...restProps} = props;
   return (
     <button
       className={`${className} my-button`}
       {...restProps}
-      onClick={() => transferWIRON(amount, ironfishAddress)}
+      onClick={() => transferWIRON(amount, ironfishAddress, product)}
+      style={{display: "flex", alignItems: "center"}}
     >
+      <img
+        src="https://ironfish.network/_next/static/media/hex-fish.ceace82e.svg"
+        alt="iron"
+        style={{width: "31px", height: "20px", marginRight: "10px"}}
+      />
       {text}
     </button>
   );

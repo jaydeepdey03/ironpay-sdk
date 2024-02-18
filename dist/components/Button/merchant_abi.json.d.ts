@@ -1,4 +1,4 @@
-[
+declare const _default: [
   {
     "inputs": [],
     "stateMutability": "nonpayable",
@@ -382,3 +382,6 @@
     "type": "function"
   }
 ]
+;
+
+export default _default;

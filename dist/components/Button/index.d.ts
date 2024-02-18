@@ -2,7 +2,16 @@ import React from "react";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     text: string;
     amount: Number;
-    address: string;
+    id: string;
+    product: Product;
 }
-export declare function JaydeepButton({ text, amount, address, ...props }: ButtonProps): import("react/jsx-runtime").JSX.Element;
+interface Product {
+    productId: string;
+    price: Number;
+    name: string;
+    qty: Number;
+    timestamp: string;
+    owner: string;
+}
+export declare function IronfishButton({ text, amount, id, product, ...props }: ButtonProps): import("react/jsx-runtime").JSX.Element;
 export {};
