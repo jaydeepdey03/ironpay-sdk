@@ -127,7 +127,7 @@ export function IronfishButton({
   const {className, ...restProps} = props;
   return (
     <button
-      className={`${className} my-button`}
+      className={`${className} ironfish-button my-button`}
       {...restProps}
       onClick={() => transferWIRON(amount, ironfishAddress, product)}
       style={{display: "flex", alignItems: "center"}}

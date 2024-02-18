@@ -37,7 +37,7 @@ function App() {
             timestamp: "0",
             owner: "0x664b8b9892b7560b356ef0f8d44cbd1f6628e388",
           }}
-          className="ironfish-button"
+          // className="ironfish-button"
         />
       </div>
     </>
