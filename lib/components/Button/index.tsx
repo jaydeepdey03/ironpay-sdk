@@ -55,7 +55,7 @@ export function IronfishButton({
     const getContract = async () => {
       if ((window as any).ethereum) {
         const merchantContractAddress =
-          "0xF26aDc0A9c90cdA8c21c267aCC1d3e408F2B8384";
+          "0x8f2806160077e9cd6532DBC6F1886082479290f6";
 
         // Access ethereum here
         const ethereum = (window as any).ethereum;
