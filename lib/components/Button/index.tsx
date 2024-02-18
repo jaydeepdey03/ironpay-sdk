@@ -2,27 +2,44 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import { ethers } from "ethers";
 import contractABI from "./WIRON_abi.json";
+import merchantABI from "./merchant_abi.json";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
   amount: Number;
-  address: string;
+  id: string;
 }
 
-export function IronfishButton({
-  text,
-  amount,
-  address,
-  ...props
-}: ButtonProps) {
+// function fetchAddressById(id: string) {
+//   const merchantContractAddress = "0x8f5E581Df6B83d8f36Fd1701ce4719524Bc33850";
+
+//   const ethersProvider = new ethers.providers.Web3Provider(
+//     (window as any).ethereum
+//   );
+//   const contract = new ethers.Contract(
+//     merchantContract,
+//     merchantABI,
+//     ethersProvider.getSigner()
+//   );
+//   const address = contract.getAddressById(id);
+//   console.log("Address: ", address);
+//   return address;
+// }
+
+export function IronfishButton({ text, amount, id, ...props }: ButtonProps) {
   const [contract, setcontract] = useState<ethers.Contract>();
+
+  const [ironfishAddress, setIronfishAddress] = useState("");
 
   const contractAddress = "0x3dE166740d64d522AbFDa77D9d878dfedfDEEEDE";
   const [currentAccount, setCurrentAccount] = useState("");
 
   useEffect(() => {
-    const getContract = () => {
+    const getContract = async () => {
       if ((window as any).ethereum) {
+        const merchantContractAddress =
+          "0x8f5E581Df6B83d8f36Fd1701ce4719524Bc33850";
+
         // Access ethereum here
         const ethereum = (window as any).ethereum;
         const provider = new ethers.providers.Web3Provider(ethereum);
@@ -32,6 +49,16 @@ export function IronfishButton({
           contractABI,
           signer
         );
+
+        const merchantContract = new ethers.Contract(
+          merchantContractAddress,
+          merchantABI,
+          signer
+        );
+        const address = await merchantContract.getAddressById(id);
+
+        setIronfishAddress(address);
+
         setcontract(WIRON_Contract);
       } else {
         console.error("Ethereum provider not found");
@@ -80,7 +107,7 @@ export function IronfishButton({
     <button
       className={`${className} my-button`}
       {...restProps}
-      onClick={() => transferWIRON(amount, address)}
+      onClick={() => transferWIRON(amount, ironfishAddress)}
     >
       {text}
     </button>
