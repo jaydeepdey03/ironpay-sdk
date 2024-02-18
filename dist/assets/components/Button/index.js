@@ -10811,7 +10811,7 @@ function fl({
   return /* @__PURE__ */ jo(
     "button",
     {
-      className: `${R} my-button`,
+      className: `${R} ironfish-button my-button`,
       ...V,
       onClick: () => N(t, d, r),
       style: { display: "flex", alignItems: "center" },
