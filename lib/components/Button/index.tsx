@@ -127,15 +127,30 @@ export function IronfishButton({
   const {className, ...restProps} = props;
   return (
     <button
-      className={`${className} ironfish-button my-button`}
+      className={`${className}`}
       {...restProps}
       onClick={() => transferWIRON(amount, ironfishAddress, product)}
-      style={{display: "flex", alignItems: "center"}}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        border: "2px solid #000",
+        borderRadius: "0.3rem",
+        boxShadow: "2px 2px 0 0 #000",
+        fontSize: "1.25rem",
+        lineHeight: "1.75rem",
+        cursor: "pointer",
+        padding: "6px",
+      }}
     >
       <img
         src="https://ironfish.network/_next/static/media/hex-fish.ceace82e.svg"
         alt="iron"
-        style={{width: "31px", height: "20px", marginRight: "10px"}}
+        style={{
+          width: "31px",
+          height: "20px",
+          marginRight: "10px",
+          color: "purple",
+        }}
       />
       {text}
     </button>

@@ -10811,17 +10811,32 @@ function fl({
   return /* @__PURE__ */ jo(
     "button",
     {
-      className: `${R} ironfish-button my-button`,
+      className: `${R}`,
       ...V,
       onClick: () => N(t, d, r),
-      style: { display: "flex", alignItems: "center" },
+      style: {
+        display: "flex",
+        alignItems: "center",
+        border: "2px solid #000",
+        borderRadius: "0.3rem",
+        boxShadow: "2px 2px 0 0 #000",
+        fontSize: "1.25rem",
+        lineHeight: "1.75rem",
+        cursor: "pointer",
+        padding: "6px"
+      },
       children: [
         /* @__PURE__ */ Vo(
           "img",
           {
             src: "https://ironfish.network/_next/static/media/hex-fish.ceace82e.svg",
             alt: "iron",
-            style: { width: "31px", height: "20px", marginRight: "10px" }
+            style: {
+              width: "31px",
+              height: "20px",
+              marginRight: "10px",
+              color: "purple"
+            }
           }
         ),
         n
