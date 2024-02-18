@@ -1,1 +1,1 @@
-export { JaydeepButton } from './components/Button'
+export { IronfishButton } from "./components/Button";

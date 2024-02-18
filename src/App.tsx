@@ -1,4 +1,4 @@
-import {JaydeepButton} from "../lib/main";
+import { IronfishButton } from "../lib/main";
 import "./App.css";
 
 function App() {
@@ -24,11 +24,11 @@ function App() {
     <>
       <div>
         <button onClick={connectWallet}>connect wallet</button>
-        <JaydeepButton
+        <IronfishButton
           text="helloworld"
           amount={100000000}
           address={address}
-          style={{color: "red", fontSize: "40px"}}
+          style={{ color: "red", fontSize: "40px" }}
         />
       </div>
     </>
