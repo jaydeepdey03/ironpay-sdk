@@ -91,8 +91,8 @@ export function IronfishButton({
           const ethereum = (window as any).ethereum;
 
           const accounts = await ethereum.request({method: "eth_accounts"}); //check if there are accounts connected to the site
-
-          if (accounts.length !== 0) {
+          console.log(accounts, "accounts");
+          if (accounts && accounts.length !== 0) {
             const account = accounts[0];
             console.log("Found an authorized account:", account);
             setCurrentAccount(account);
