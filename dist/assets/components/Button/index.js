@@ -10768,7 +10768,7 @@ function fl({
   qi(() => {
     (async () => {
       if (window.ethereum) {
-        const L = "0x8f2806160077e9cd6532DBC6F1886082479290f6", j = window.ethereum, Q = new nl(j).getSigner(), ft = new bs(
+        const L = "0x4305898F56b0bdDCe5e9b91C60A793d9443C62Ed", j = window.ethereum, Q = new nl(j).getSigner(), ft = new bs(
           w,
           Fs,
           Q
