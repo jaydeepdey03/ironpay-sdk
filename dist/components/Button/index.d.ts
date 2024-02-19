@@ -14,4 +14,15 @@ interface Product {
     owner: string;
 }
 export declare function IronfishButton({ text, amount, id, product, ...props }: ButtonProps): import("react/jsx-runtime").JSX.Element;
+interface Deposit {
+    text: string;
+    amount: string;
+}
+export declare function AllowAndDepositButton({ text, amount }: Deposit): import("react/jsx-runtime").JSX.Element;
+interface Withdraw {
+    text: string;
+    address: string;
+    amount: string;
+}
+export declare function WithdrawWIRONButton({ text, address, amount }: Withdraw): import("react/jsx-runtime").JSX.Element;
 export {};

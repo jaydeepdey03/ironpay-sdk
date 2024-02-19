@@ -1,4 +1,6 @@
 import {IronfishButton} from "../lib/main";
+import {AllowAndDepositButton} from "../lib/components/Button";
+import {WithdrawWIRONButton} from "../lib/components/Button";
 import "./App.css";
 
 function App() {
@@ -38,6 +40,14 @@ function App() {
             owner: "0x664b8b9892b7560b356ef0f8d44cbd1f6628e388",
           }}
           // className="ironfish-button"
+        />
+
+        <AllowAndDepositButton text="allow and deposit" amount="100000000" />
+
+        <WithdrawWIRONButton
+          text="Withdraw WIRON"
+          address="0x10AbbDc83E8e33974650cB897b16250E07979CBa"
+          amount="200000000"
         />
       </div>
     </>
