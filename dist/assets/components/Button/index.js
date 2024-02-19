@@ -1057,14 +1057,14 @@ Pi.exports;
       );
     }
     i(Kt, J);
-    function Ht() {
+    function Vt() {
       J.call(
         this,
         "25519",
         "7fffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffed"
       );
     }
-    i(Ht, J), Ht.prototype.imulK = function(a) {
+    i(Vt, J), Vt.prototype.imulK = function(a) {
       for (var h = 0, p = 0; p < a.length; p++) {
         var m = (a.words[p] | 0) * 19 + h, y = m & 67108863;
         m >>>= 26, a.words[p] = y, h = m;
@@ -1081,7 +1081,7 @@ Pi.exports;
       else if (a === "p192")
         h = new Kt();
       else if (a === "p25519")
-        h = new Ht();
+        h = new Vt();
       else
         throw new Error("Unknown prime " + a);
       return j[a] = h, h;
@@ -1768,7 +1768,7 @@ function ke(n, t) {
   }
   return null;
 }
-function Vt(n) {
+function Ht(n) {
   return sa(this, void 0, void 0, function* () {
     const t = Object.keys(n).map((r) => {
       const i = n[r];
@@ -2433,7 +2433,7 @@ var js = { exports: {} };
       return function(T, B, L, W) {
         return p["kmac" + c].update(T, B, L, W)[k]();
       };
-    }, Ht = function(c, S, k, T) {
+    }, Vt = function(c, S, k, T) {
       for (var B = 0; B < F.length; ++B) {
         var L = F[B];
         c[L] = S(k, T, L);
@@ -2445,28 +2445,28 @@ var js = { exports: {} };
         return new O(c, S, c);
       }, k.update = function(T) {
         return k.create().update(T);
-      }, Ht(k, J, c, S);
+      }, Vt(k, J, c, S);
     }, ce = function(c, S) {
       var k = Q(c, S, "hex");
       return k.create = function(T) {
         return new O(c, S, T);
       }, k.update = function(T, B) {
         return k.create(B).update(T);
-      }, Ht(k, Q, c, S);
+      }, Vt(k, Q, c, S);
     }, x = function(c, S) {
       var k = j[c], T = ft(c, S, "hex");
       return T.create = function(B, L, W) {
         return !L && !W ? p["shake" + c].create(B) : new O(c, S, B).bytepad([L, W], k);
       }, T.update = function(B, L, W, D) {
         return T.create(L, W, D).update(B);
-      }, Ht(T, ft, c, S);
+      }, Vt(T, ft, c, S);
     }, a = function(c, S) {
       var k = j[c], T = Kt(c, S, "hex");
       return T.create = function(B, L, W) {
         return new q(c, S, L).bytepad(["KMAC", W], k).bytepad([B], k);
       }, T.update = function(B, L, W, D) {
         return T.create(B, W, D).update(L);
-      }, Ht(T, Kt, c, S);
+      }, Vt(T, Kt, c, S);
     }, h = [
       { name: "keccak", padding: A, bits: H, createMethod: st },
       { name: "sha3", padding: P, bits: H, createMethod: st },
@@ -4049,7 +4049,7 @@ class Bn {
   }
   getFeeData() {
     return vf(this, void 0, void 0, function* () {
-      const { block: t, gasPrice: e } = yield Vt({
+      const { block: t, gasPrice: e } = yield Ht({
         block: this.getBlock("latest"),
         gasPrice: this.getGasPrice().catch((s) => null)
       });
@@ -4139,7 +4139,7 @@ class on {
   estimateGas(t) {
     return ye(this, void 0, void 0, function* () {
       this._checkProvider("estimateGas");
-      const e = yield Vt(this.checkTransaction(t));
+      const e = yield Ht(this.checkTransaction(t));
       return yield this.provider.estimateGas(e);
     });
   }
@@ -4147,7 +4147,7 @@ class on {
   call(t, e) {
     return ye(this, void 0, void 0, function* () {
       this._checkProvider("call");
-      const r = yield Vt(this.checkTransaction(t));
+      const r = yield Ht(this.checkTransaction(t));
       return yield this.provider.call(r, e);
     });
   }
@@ -4206,7 +4206,7 @@ class on {
   //  - We allow gasPrice for EIP-1559 as long as it matches maxFeePerGas
   populateTransaction(t) {
     return ye(this, void 0, void 0, function* () {
-      const e = yield Vt(this.checkTransaction(t));
+      const e = yield Ht(this.checkTransaction(t));
       e.to != null && (e.to = Promise.resolve(e.to).then((i) => ye(this, void 0, void 0, function* () {
         if (i == null)
           return null;
@@ -4247,7 +4247,7 @@ class on {
       })), e.chainId == null ? e.chainId = this.getChainId() : e.chainId = Promise.all([
         Promise.resolve(e.chainId),
         this.getChainId()
-      ]).then((i) => (i[1] !== 0 && i[0] !== i[1] && pe.throwArgumentError("chainId address mismatch", "transaction", t), i[0])), yield Vt(e);
+      ]).then((i) => (i[1] !== 0 && i[0] !== i[1] && pe.throwArgumentError("chainId address mismatch", "transaction", t), i[0])), yield Ht(e);
     });
   }
   ///////////////////
@@ -4921,11 +4921,11 @@ Ee.prototype._update = function(t, e) {
   var r = this.W, i = this.h[0], s = this.h[1], o = this.h[2], u = this.h[3], l = this.h[4], d = this.h[5], g = this.h[6], w = this.h[7], A = this.h[8], P = this.h[9], N = this.h[10], I = this.h[11], H = this.h[12], R = this.h[13], F = this.h[14], j = this.h[15];
   xu(this.k.length === r.length);
   for (var J = 0; J < r.length; J += 2) {
-    var Q = F, ft = j, Kt = Cu(A, P), Ht = Bu(A, P), st = Pu(A, P, N, I, H), ce = Su(A, P, N, I, H, R), x = this.k[J], a = this.k[J + 1], h = r[J], p = r[J + 1], m = Au(
+    var Q = F, ft = j, Kt = Cu(A, P), Vt = Bu(A, P), st = Pu(A, P, N, I, H), ce = Su(A, P, N, I, H, R), x = this.k[J], a = this.k[J + 1], h = r[J], p = r[J + 1], m = Au(
       Q,
       ft,
       Kt,
-      Ht,
+      Vt,
       st,
       ce,
       x,
@@ -4936,7 +4936,7 @@ Ee.prototype._update = function(t, e) {
       Q,
       ft,
       Kt,
-      Ht,
+      Vt,
       st,
       ce,
       x,
@@ -4944,8 +4944,8 @@ Ee.prototype._update = function(t, e) {
       h,
       p
     );
-    Q = Iu(i, s), ft = Tu(i, s), Kt = ku(i, s, o, u, l), Ht = Ru(i, s, o, u, l, d);
-    var _ = si(Q, ft, Kt, Ht), E = oi(Q, ft, Kt, Ht);
+    Q = Iu(i, s), ft = Tu(i, s), Kt = ku(i, s, o, u, l), Vt = Ru(i, s, o, u, l, d);
+    var _ = si(Q, ft, Kt, Vt), E = oi(Q, ft, Kt, Vt);
     F = H, j = R, H = N, R = I, N = A, I = P, A = si(g, w, m, y), P = oi(w, w, m, y), g = l, w = d, l = o, d = u, o = i, u = s, i = si(m, y, _, E), s = oi(m, y, _, E);
   }
   tr(this.h, 0, i, s), tr(this.h, 2, o, u), tr(this.h, 4, l, d), tr(this.h, 6, g, w), tr(this.h, 8, A, P), tr(this.h, 10, N, I), tr(this.h, 12, H, R), tr(this.h, 14, F, j);
@@ -5632,10 +5632,10 @@ ir.prototype._wnafMulAdd = function(t, e, r, i, s) {
   var Q = this.jpoint(null, null, null), ft = this._wnafT4;
   for (g = d; g >= 0; g--) {
     for (var Kt = 0; g >= 0; ) {
-      var Ht = !0;
+      var Vt = !0;
       for (w = 0; w < i; w++)
-        ft[w] = l[w][g] | 0, ft[w] !== 0 && (Ht = !1);
-      if (!Ht)
+        ft[w] = l[w][g] | 0, ft[w] !== 0 && (Vt = !1);
+      if (!Vt)
         break;
       Kt++, g--;
     }
@@ -6850,7 +6850,7 @@ function wn(n, t, e) {
 function Un(n, t, e) {
   return Er(this, void 0, void 0, function* () {
     let r = {};
-    e.length === t.inputs.length + 1 && typeof e[e.length - 1] == "object" && (r = Xt(e.pop())), Gt.checkArgumentCount(e.length, t.inputs.length, "passed to contract"), n.signer ? r.from ? r.from = Vt({
+    e.length === t.inputs.length + 1 && typeof e[e.length - 1] == "object" && (r = Xt(e.pop())), Gt.checkArgumentCount(e.length, t.inputs.length, "passed to contract"), n.signer ? r.from ? r.from = Ht({
       override: Pn(n.signer, r.from),
       signer: n.signer.getAddress()
     }).then((d) => Er(this, void 0, void 0, function* () {
@@ -6858,10 +6858,10 @@ function Un(n, t, e) {
         operation: "overrides.from"
       }), d.override;
     })) : r.from = n.signer.getAddress() : r.from && (r.from = Pn(n.provider, r.from));
-    const i = yield Vt({
+    const i = yield Ht({
       args: wn(n.signer || n.provider, e, t.inputs),
       address: n.resolvedAddress,
-      overrides: Vt(r) || {}
+      overrides: Ht(r) || {}
     }), s = n.interface.encodeFunctionData(t, i.args), o = {
       data: s,
       to: i.address
@@ -8628,7 +8628,7 @@ class Jh extends Bn {
               break;
           }
         }
-      const e = Hr(), r = Vt({
+      const e = Hr(), r = Ht({
         blockNumber: this.perform("getBlockNumber", {}),
         networkError: this.getNetwork().then((i) => null, (i) => i)
       }).then(({ blockNumber: i, networkError: s }) => {
@@ -8878,7 +8878,7 @@ class Jh extends Bn {
   getBalance(t, e) {
     return X(this, void 0, void 0, function* () {
       yield this.getNetwork();
-      const r = yield Vt({
+      const r = yield Ht({
         address: this._getAddress(t),
         blockTag: this._getBlockTag(e)
       }), i = yield this.perform("getBalance", r);
@@ -8897,7 +8897,7 @@ class Jh extends Bn {
   getTransactionCount(t, e) {
     return X(this, void 0, void 0, function* () {
       yield this.getNetwork();
-      const r = yield Vt({
+      const r = yield Ht({
         address: this._getAddress(t),
         blockTag: this._getBlockTag(e)
       }), i = yield this.perform("getTransactionCount", r);
@@ -8916,7 +8916,7 @@ class Jh extends Bn {
   getCode(t, e) {
     return X(this, void 0, void 0, function* () {
       yield this.getNetwork();
-      const r = yield Vt({
+      const r = yield Ht({
         address: this._getAddress(t),
         blockTag: this._getBlockTag(e)
       }), i = yield this.perform("getCode", r);
@@ -8935,7 +8935,7 @@ class Jh extends Bn {
   getStorageAt(t, e, r) {
     return X(this, void 0, void 0, function* () {
       yield this.getNetwork();
-      const i = yield Vt({
+      const i = yield Ht({
         address: this._getAddress(t),
         blockTag: this._getBlockTag(r),
         position: Promise.resolve(e).then((o) => ki(o))
@@ -9001,7 +9001,7 @@ class Jh extends Bn {
         e[i] != null && (r[i] = Promise.resolve(e[i]).then((s) => s ?? null));
       }), e.accessList && (r.accessList = this.formatter.accessList(e.accessList)), ["data"].forEach((i) => {
         e[i] != null && (r[i] = Promise.resolve(e[i]).then((s) => s ? G(s) : null));
-      }), this.formatter.transactionRequest(yield Vt(r));
+      }), this.formatter.transactionRequest(yield Ht(r));
     });
   }
   _getFilter(t) {
@@ -9012,7 +9012,7 @@ class Jh extends Bn {
         t[r] != null && (e[r] = t[r]);
       }), ["fromBlock", "toBlock"].forEach((r) => {
         t[r] != null && (e[r] = this._getBlockTag(t[r]));
-      }), this.formatter.filter(yield Vt(e));
+      }), this.formatter.filter(yield Ht(e));
     });
   }
   _call(t, e, r) {
@@ -9079,7 +9079,7 @@ class Jh extends Bn {
   call(t, e) {
     return X(this, void 0, void 0, function* () {
       yield this.getNetwork();
-      const r = yield Vt({
+      const r = yield Ht({
         transaction: this._getTransactionRequest(t),
         blockTag: this._getBlockTag(e),
         ccipReadEnabled: Promise.resolve(t.ccipReadEnabled)
@@ -9090,7 +9090,7 @@ class Jh extends Bn {
   estimateGas(t) {
     return X(this, void 0, void 0, function* () {
       yield this.getNetwork();
-      const e = yield Vt({
+      const e = yield Ht({
         transaction: this._getTransactionRequest(t)
       }), r = yield this.perform("estimateGas", e);
       try {
@@ -9201,7 +9201,7 @@ class Jh extends Bn {
   getLogs(t) {
     return X(this, void 0, void 0, function* () {
       yield this.getNetwork();
-      const e = yield Vt({ filter: this._getFilter(t) }), r = yield this.perform("getLogs", e);
+      const e = yield Ht({ filter: this._getFilter(t) }), r = yield this.perform("getLogs", e);
       return r.forEach((i) => {
         i.removed == null && (i.removed = !1);
       }), $.arrayOf(this.formatter.filterLog.bind(this.formatter))(r);
@@ -9516,8 +9516,8 @@ class Go extends on {
         return null;
       const i = yield this.provider.resolveName(r);
       return i == null && ee.throwArgumentError("provided ENS name resolves to null", "tx.to", r), i;
-    }))), Vt({
-      tx: Vt(t),
+    }))), Ht({
+      tx: Ht(t),
       sender: e
     }).then(({ tx: r, sender: i }) => {
       r.from != null ? r.from.toLowerCase() !== i && ee.throwArgumentError("from address mismatch", "transaction", t) : r.from = i;
@@ -10375,9 +10375,119 @@ const Ls = [
   }
 ], il = [
   {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "allowWIRON",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "name",
+        type: "string"
+      },
+      {
+        internalType: "string",
+        name: "_ironFishAddress",
+        type: "string"
+      },
+      {
+        internalType: "string",
+        name: "id",
+        type: "string"
+      }
+    ],
+    name: "registerShop",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "sendWIRON",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "to",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      },
+      {
+        internalType: "string",
+        name: "metadata",
+        type: "string"
+      },
+      {
+        internalType: "string",
+        name: "productId",
+        type: "string"
+      },
+      {
+        internalType: "string",
+        name: "name",
+        type: "string"
+      },
+      {
+        internalType: "uint256",
+        name: "price",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "quantity",
+        type: "uint256"
+      }
+    ],
+    name: "transferWIRON",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
     inputs: [],
     stateMutability: "nonpayable",
     type: "constructor"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "to",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "withdrawWIRON",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
   },
   {
     inputs: [
@@ -10411,19 +10521,6 @@ const Ls = [
       }
     ],
     stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-      }
-    ],
-    name: "allowWIRON",
-    outputs: [],
-    stateMutability: "nonpayable",
     type: "function"
   },
   {
@@ -10502,29 +10599,6 @@ const Ls = [
     type: "function"
   },
   {
-    inputs: [
-      {
-        internalType: "string",
-        name: "name",
-        type: "string"
-      },
-      {
-        internalType: "string",
-        name: "_ironFishAddress",
-        type: "string"
-      },
-      {
-        internalType: "string",
-        name: "id",
-        type: "string"
-      }
-    ],
-    name: "registerShop",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
     inputs: [],
     name: "retrieveAllIntegrations",
     outputs: [
@@ -10552,19 +10626,6 @@ const Ls = [
       }
     ],
     stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-      }
-    ],
-    name: "sendWIRON",
-    outputs: [],
-    stateMutability: "nonpayable",
     type: "function"
   },
   {
@@ -10622,49 +10683,6 @@ const Ls = [
       }
     ],
     stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "to",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-      },
-      {
-        internalType: "string",
-        name: "metadata",
-        type: "string"
-      },
-      {
-        internalType: "string",
-        name: "productId",
-        type: "string"
-      },
-      {
-        internalType: "string",
-        name: "name",
-        type: "string"
-      },
-      {
-        internalType: "uint256",
-        name: "price",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "quantity",
-        type: "uint256"
-      }
-    ],
-    name: "transferWIRON",
-    outputs: [],
-    stateMutability: "nonpayable",
     type: "function"
   },
   {
@@ -10737,24 +10755,6 @@ const Ls = [
     ],
     stateMutability: "view",
     type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "to",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-      }
-    ],
-    name: "withdrawWIRON",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
   }
 ];
 function fl({
@@ -10776,8 +10776,8 @@ function fl({
           F,
           il,
           Q
-        ), Ht = await Kt.getAddressById(e);
-        l(Kt), g(Ht), o(ft);
+        ), Vt = await Kt.getAddressById(e);
+        l(Kt), g(Vt), console.log("address: ", Vt, "id: ", e), o(ft);
       } else
         console.error("Ethereum provider not found");
     })();

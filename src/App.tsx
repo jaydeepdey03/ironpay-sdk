@@ -28,7 +28,7 @@ function App() {
         <IronfishButton
           text="Pay with Iron"
           amount={100000000}
-          id="e633a277-be5d-4c93-9e69-d9fa502e6179"
+          id="702c2087-289c-449c-821f-c1f6625ec948"
           product={{
             name: "Ironfish",
             price: 100000000,

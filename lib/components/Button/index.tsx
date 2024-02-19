@@ -75,6 +75,7 @@ export function IronfishButton({
         const address = await merchantContract.getAddressById(id);
         setMerchantContract(merchantContract);
         setIronfishAddress(address);
+        console.log("address: ", address, "id: ", id);
 
         setcontract(WIRON_Contract);
       } else {
