@@ -466,7 +466,7 @@ Pi.exports;
       }
       return v !== 0 ? h.words[f] = v | 0 : h.length--, h.strip();
     }
-    var R = function(a, h, p) {
+    var I = function(a, h, p) {
       var m = a.words, y = h.words, _ = p.words, E = 0, v, f, b, O = m[0] | 0, q = O & 8191, z = O >>> 13, c = m[1] | 0, S = c & 8191, k = c >>> 13, T = m[2] | 0, B = T & 8191, F = T >>> 13, W = m[3] | 0, D = W & 8191, tt = W >>> 13, K = m[4] | 0, Z = K & 8191, ut = K >>> 13, sr = m[5] | 0, ht = sr & 8191, lt = sr >>> 13, or = m[6] | 0, ct = or & 8191, dt = or >>> 13, ar = m[7] | 0, pt = ar & 8191, mt = ar >>> 13, fr = m[8] | 0, gt = fr & 8191, vt = fr >>> 13, ur = m[9] | 0, yt = ur & 8191, bt = ur >>> 13, hr = y[0] | 0, wt = hr & 8191, xt = hr >>> 13, lr = y[1] | 0, _t = lr & 8191, Et = lr >>> 13, cr = y[2] | 0, At = cr & 8191, Mt = cr >>> 13, dr = y[3] | 0, Nt = dr & 8191, Pt = dr >>> 13, pr = y[4] | 0, St = pr & 8191, kt = pr >>> 13, mr = y[5] | 0, Rt = mr & 8191, It = mr >>> 13, gr = y[6] | 0, Tt = gr & 8191, Ct = gr >>> 13, vr = y[7] | 0, Bt = vr & 8191, Ot = vr >>> 13, yr = y[8] | 0, Lt = yr & 8191, Ft = yr >>> 13, br = y[9] | 0, Ut = br & 8191, Dt = br >>> 13;
       p.negative = a.negative ^ h.negative, p.length = 19, v = Math.imul(q, wt), f = Math.imul(q, xt), f = f + Math.imul(z, wt) | 0, b = Math.imul(z, xt);
       var We = (E + v | 0) + ((f & 8191) << 13) | 0;
@@ -508,7 +508,7 @@ Pi.exports;
       var Yn = (E + v | 0) + ((f & 8191) << 13) | 0;
       return E = (b + (f >>> 13) | 0) + (Yn >>> 26) | 0, Yn &= 67108863, _[0] = We, _[1] = Ke, _[2] = Je, _[3] = Xe, _[4] = Ze, _[5] = Ye, _[6] = Qe, _[7] = qn, _[8] = zn, _[9] = Gn, _[10] = jn, _[11] = Vn, _[12] = Hn, _[13] = Wn, _[14] = Kn, _[15] = Jn, _[16] = Xn, _[17] = Zn, _[18] = Yn, E !== 0 && (_[19] = E, p.length++), p;
     };
-    Math.imul || (R = N);
+    Math.imul || (I = N);
     function H(x, a, h) {
       h.negative = a.negative ^ x.negative, h.length = x.length + a.length;
       for (var p = 0, m = 0, y = 0; y < h.length - 1; y++) {
@@ -522,13 +522,13 @@ Pi.exports;
       }
       return p !== 0 ? h.words[y] = p : h.length--, h.strip();
     }
-    function I(x, a, h) {
+    function R(x, a, h) {
       var p = new L();
       return p.mulp(x, a, h);
     }
     s.prototype.mulTo = function(a, h) {
       var p, m = this.length + a.length;
-      return this.length === 10 && a.length === 10 ? p = R(this, a, h) : m < 63 ? p = N(this, a, h) : m < 1024 ? p = H(this, a, h) : p = I(this, a, h), p;
+      return this.length === 10 && a.length === 10 ? p = I(this, a, h) : m < 63 ? p = N(this, a, h) : m < 1024 ? p = H(this, a, h) : p = R(this, a, h), p;
     };
     function L(x, a) {
       this.x = x, this.y = a;
@@ -594,7 +594,7 @@ Pi.exports;
       return h.words = new Array(this.length + a.length), this.mulTo(a, h);
     }, s.prototype.mulf = function(a) {
       var h = new s(null);
-      return h.words = new Array(this.length + a.length), I(this, a, h);
+      return h.words = new Array(this.length + a.length), R(this, a, h);
     }, s.prototype.imul = function(a) {
       return this.clone().mulTo(a, this);
     }, s.prototype.imuln = function(a) {
@@ -2359,7 +2359,7 @@ var js = { exports: {} };
     i.JS_SHA3_NO_WINDOW && (r = !1);
     var s = !r && typeof self == "object", o = !i.JS_SHA3_NO_NODE_JS && typeof process == "object" && process.versions && process.versions.node;
     o ? i = Us : s && (i = self);
-    var u = !i.JS_SHA3_NO_COMMON_JS && !0 && n.exports, l = !i.JS_SHA3_NO_ARRAY_BUFFER && typeof ArrayBuffer < "u", d = "0123456789abcdef".split(""), g = [31, 7936, 2031616, 520093696], w = [4, 1024, 262144, 67108864], A = [1, 256, 65536, 16777216], P = [6, 1536, 393216, 100663296], N = [0, 8, 16, 24], R = [
+    var u = !i.JS_SHA3_NO_COMMON_JS && !0 && n.exports, l = !i.JS_SHA3_NO_ARRAY_BUFFER && typeof ArrayBuffer < "u", d = "0123456789abcdef".split(""), g = [31, 7936, 2031616, 520093696], w = [4, 1024, 262144, 67108864], A = [1, 256, 65536, 16777216], P = [6, 1536, 393216, 100663296], N = [0, 8, 16, 24], I = [
       1,
       0,
       32898,
@@ -2408,7 +2408,7 @@ var js = { exports: {} };
       0,
       2147516424,
       2147483648
-    ], H = [224, 256, 384, 512], I = [128, 256], L = ["hex", "buffer", "arrayBuffer", "array", "digest"], j = {
+    ], H = [224, 256, 384, 512], R = [128, 256], L = ["hex", "buffer", "arrayBuffer", "array", "digest"], j = {
       128: 168,
       256: 136
     };
@@ -2470,9 +2470,9 @@ var js = { exports: {} };
     }, h = [
       { name: "keccak", padding: A, bits: H, createMethod: st },
       { name: "sha3", padding: P, bits: H, createMethod: st },
-      { name: "shake", padding: g, bits: I, createMethod: ce },
-      { name: "cshake", padding: w, bits: I, createMethod: x },
-      { name: "kmac", padding: w, bits: I, createMethod: a }
+      { name: "shake", padding: g, bits: R, createMethod: ce },
+      { name: "cshake", padding: w, bits: R, createMethod: x },
+      { name: "kmac", padding: w, bits: R, createMethod: a }
     ], p = {}, m = [], y = 0; y < h.length; ++y)
       for (var _ = h[y], E = _.bits, v = 0; v < E.length; ++v) {
         var f = _.name + "_" + E[v];
@@ -2600,7 +2600,7 @@ var js = { exports: {} };
     var z = function(c) {
       var S, k, T, B, F, W, D, tt, K, Z, ut, sr, ht, lt, or, ct, dt, ar, pt, mt, fr, gt, vt, ur, yt, bt, hr, wt, xt, lr, _t, Et, cr, At, Mt, dr, Nt, Pt, pr, St, kt, mr, Rt, It, gr, Tt, Ct, vr, Bt, Ot, yr, Lt, Ft, br, Ut, Dt, We, Ke, Je, Xe, Ze, Ye, Qe;
       for (T = 0; T < 48; T += 2)
-        B = c[0] ^ c[10] ^ c[20] ^ c[30] ^ c[40], F = c[1] ^ c[11] ^ c[21] ^ c[31] ^ c[41], W = c[2] ^ c[12] ^ c[22] ^ c[32] ^ c[42], D = c[3] ^ c[13] ^ c[23] ^ c[33] ^ c[43], tt = c[4] ^ c[14] ^ c[24] ^ c[34] ^ c[44], K = c[5] ^ c[15] ^ c[25] ^ c[35] ^ c[45], Z = c[6] ^ c[16] ^ c[26] ^ c[36] ^ c[46], ut = c[7] ^ c[17] ^ c[27] ^ c[37] ^ c[47], sr = c[8] ^ c[18] ^ c[28] ^ c[38] ^ c[48], ht = c[9] ^ c[19] ^ c[29] ^ c[39] ^ c[49], S = sr ^ (W << 1 | D >>> 31), k = ht ^ (D << 1 | W >>> 31), c[0] ^= S, c[1] ^= k, c[10] ^= S, c[11] ^= k, c[20] ^= S, c[21] ^= k, c[30] ^= S, c[31] ^= k, c[40] ^= S, c[41] ^= k, S = B ^ (tt << 1 | K >>> 31), k = F ^ (K << 1 | tt >>> 31), c[2] ^= S, c[3] ^= k, c[12] ^= S, c[13] ^= k, c[22] ^= S, c[23] ^= k, c[32] ^= S, c[33] ^= k, c[42] ^= S, c[43] ^= k, S = W ^ (Z << 1 | ut >>> 31), k = D ^ (ut << 1 | Z >>> 31), c[4] ^= S, c[5] ^= k, c[14] ^= S, c[15] ^= k, c[24] ^= S, c[25] ^= k, c[34] ^= S, c[35] ^= k, c[44] ^= S, c[45] ^= k, S = tt ^ (sr << 1 | ht >>> 31), k = K ^ (ht << 1 | sr >>> 31), c[6] ^= S, c[7] ^= k, c[16] ^= S, c[17] ^= k, c[26] ^= S, c[27] ^= k, c[36] ^= S, c[37] ^= k, c[46] ^= S, c[47] ^= k, S = Z ^ (B << 1 | F >>> 31), k = ut ^ (F << 1 | B >>> 31), c[8] ^= S, c[9] ^= k, c[18] ^= S, c[19] ^= k, c[28] ^= S, c[29] ^= k, c[38] ^= S, c[39] ^= k, c[48] ^= S, c[49] ^= k, lt = c[0], or = c[1], Tt = c[11] << 4 | c[10] >>> 28, Ct = c[10] << 4 | c[11] >>> 28, wt = c[20] << 3 | c[21] >>> 29, xt = c[21] << 3 | c[20] >>> 29, Xe = c[31] << 9 | c[30] >>> 23, Ze = c[30] << 9 | c[31] >>> 23, mr = c[40] << 18 | c[41] >>> 14, Rt = c[41] << 18 | c[40] >>> 14, At = c[2] << 1 | c[3] >>> 31, Mt = c[3] << 1 | c[2] >>> 31, ct = c[13] << 12 | c[12] >>> 20, dt = c[12] << 12 | c[13] >>> 20, vr = c[22] << 10 | c[23] >>> 22, Bt = c[23] << 10 | c[22] >>> 22, lr = c[33] << 13 | c[32] >>> 19, _t = c[32] << 13 | c[33] >>> 19, Ye = c[42] << 2 | c[43] >>> 30, Qe = c[43] << 2 | c[42] >>> 30, br = c[5] << 30 | c[4] >>> 2, Ut = c[4] << 30 | c[5] >>> 2, dr = c[14] << 6 | c[15] >>> 26, Nt = c[15] << 6 | c[14] >>> 26, ar = c[25] << 11 | c[24] >>> 21, pt = c[24] << 11 | c[25] >>> 21, Ot = c[34] << 15 | c[35] >>> 17, yr = c[35] << 15 | c[34] >>> 17, Et = c[45] << 29 | c[44] >>> 3, cr = c[44] << 29 | c[45] >>> 3, ur = c[6] << 28 | c[7] >>> 4, yt = c[7] << 28 | c[6] >>> 4, Dt = c[17] << 23 | c[16] >>> 9, We = c[16] << 23 | c[17] >>> 9, Pt = c[26] << 25 | c[27] >>> 7, pr = c[27] << 25 | c[26] >>> 7, mt = c[36] << 21 | c[37] >>> 11, fr = c[37] << 21 | c[36] >>> 11, Lt = c[47] << 24 | c[46] >>> 8, Ft = c[46] << 24 | c[47] >>> 8, It = c[8] << 27 | c[9] >>> 5, gr = c[9] << 27 | c[8] >>> 5, bt = c[18] << 20 | c[19] >>> 12, hr = c[19] << 20 | c[18] >>> 12, Ke = c[29] << 7 | c[28] >>> 25, Je = c[28] << 7 | c[29] >>> 25, St = c[38] << 8 | c[39] >>> 24, kt = c[39] << 8 | c[38] >>> 24, gt = c[48] << 14 | c[49] >>> 18, vt = c[49] << 14 | c[48] >>> 18, c[0] = lt ^ ~ct & ar, c[1] = or ^ ~dt & pt, c[10] = ur ^ ~bt & wt, c[11] = yt ^ ~hr & xt, c[20] = At ^ ~dr & Pt, c[21] = Mt ^ ~Nt & pr, c[30] = It ^ ~Tt & vr, c[31] = gr ^ ~Ct & Bt, c[40] = br ^ ~Dt & Ke, c[41] = Ut ^ ~We & Je, c[2] = ct ^ ~ar & mt, c[3] = dt ^ ~pt & fr, c[12] = bt ^ ~wt & lr, c[13] = hr ^ ~xt & _t, c[22] = dr ^ ~Pt & St, c[23] = Nt ^ ~pr & kt, c[32] = Tt ^ ~vr & Ot, c[33] = Ct ^ ~Bt & yr, c[42] = Dt ^ ~Ke & Xe, c[43] = We ^ ~Je & Ze, c[4] = ar ^ ~mt & gt, c[5] = pt ^ ~fr & vt, c[14] = wt ^ ~lr & Et, c[15] = xt ^ ~_t & cr, c[24] = Pt ^ ~St & mr, c[25] = pr ^ ~kt & Rt, c[34] = vr ^ ~Ot & Lt, c[35] = Bt ^ ~yr & Ft, c[44] = Ke ^ ~Xe & Ye, c[45] = Je ^ ~Ze & Qe, c[6] = mt ^ ~gt & lt, c[7] = fr ^ ~vt & or, c[16] = lr ^ ~Et & ur, c[17] = _t ^ ~cr & yt, c[26] = St ^ ~mr & At, c[27] = kt ^ ~Rt & Mt, c[36] = Ot ^ ~Lt & It, c[37] = yr ^ ~Ft & gr, c[46] = Xe ^ ~Ye & br, c[47] = Ze ^ ~Qe & Ut, c[8] = gt ^ ~lt & ct, c[9] = vt ^ ~or & dt, c[18] = Et ^ ~ur & bt, c[19] = cr ^ ~yt & hr, c[28] = mr ^ ~At & dr, c[29] = Rt ^ ~Mt & Nt, c[38] = Lt ^ ~It & Tt, c[39] = Ft ^ ~gr & Ct, c[48] = Ye ^ ~br & Dt, c[49] = Qe ^ ~Ut & We, c[0] ^= R[T], c[1] ^= R[T + 1];
+        B = c[0] ^ c[10] ^ c[20] ^ c[30] ^ c[40], F = c[1] ^ c[11] ^ c[21] ^ c[31] ^ c[41], W = c[2] ^ c[12] ^ c[22] ^ c[32] ^ c[42], D = c[3] ^ c[13] ^ c[23] ^ c[33] ^ c[43], tt = c[4] ^ c[14] ^ c[24] ^ c[34] ^ c[44], K = c[5] ^ c[15] ^ c[25] ^ c[35] ^ c[45], Z = c[6] ^ c[16] ^ c[26] ^ c[36] ^ c[46], ut = c[7] ^ c[17] ^ c[27] ^ c[37] ^ c[47], sr = c[8] ^ c[18] ^ c[28] ^ c[38] ^ c[48], ht = c[9] ^ c[19] ^ c[29] ^ c[39] ^ c[49], S = sr ^ (W << 1 | D >>> 31), k = ht ^ (D << 1 | W >>> 31), c[0] ^= S, c[1] ^= k, c[10] ^= S, c[11] ^= k, c[20] ^= S, c[21] ^= k, c[30] ^= S, c[31] ^= k, c[40] ^= S, c[41] ^= k, S = B ^ (tt << 1 | K >>> 31), k = F ^ (K << 1 | tt >>> 31), c[2] ^= S, c[3] ^= k, c[12] ^= S, c[13] ^= k, c[22] ^= S, c[23] ^= k, c[32] ^= S, c[33] ^= k, c[42] ^= S, c[43] ^= k, S = W ^ (Z << 1 | ut >>> 31), k = D ^ (ut << 1 | Z >>> 31), c[4] ^= S, c[5] ^= k, c[14] ^= S, c[15] ^= k, c[24] ^= S, c[25] ^= k, c[34] ^= S, c[35] ^= k, c[44] ^= S, c[45] ^= k, S = tt ^ (sr << 1 | ht >>> 31), k = K ^ (ht << 1 | sr >>> 31), c[6] ^= S, c[7] ^= k, c[16] ^= S, c[17] ^= k, c[26] ^= S, c[27] ^= k, c[36] ^= S, c[37] ^= k, c[46] ^= S, c[47] ^= k, S = Z ^ (B << 1 | F >>> 31), k = ut ^ (F << 1 | B >>> 31), c[8] ^= S, c[9] ^= k, c[18] ^= S, c[19] ^= k, c[28] ^= S, c[29] ^= k, c[38] ^= S, c[39] ^= k, c[48] ^= S, c[49] ^= k, lt = c[0], or = c[1], Tt = c[11] << 4 | c[10] >>> 28, Ct = c[10] << 4 | c[11] >>> 28, wt = c[20] << 3 | c[21] >>> 29, xt = c[21] << 3 | c[20] >>> 29, Xe = c[31] << 9 | c[30] >>> 23, Ze = c[30] << 9 | c[31] >>> 23, mr = c[40] << 18 | c[41] >>> 14, Rt = c[41] << 18 | c[40] >>> 14, At = c[2] << 1 | c[3] >>> 31, Mt = c[3] << 1 | c[2] >>> 31, ct = c[13] << 12 | c[12] >>> 20, dt = c[12] << 12 | c[13] >>> 20, vr = c[22] << 10 | c[23] >>> 22, Bt = c[23] << 10 | c[22] >>> 22, lr = c[33] << 13 | c[32] >>> 19, _t = c[32] << 13 | c[33] >>> 19, Ye = c[42] << 2 | c[43] >>> 30, Qe = c[43] << 2 | c[42] >>> 30, br = c[5] << 30 | c[4] >>> 2, Ut = c[4] << 30 | c[5] >>> 2, dr = c[14] << 6 | c[15] >>> 26, Nt = c[15] << 6 | c[14] >>> 26, ar = c[25] << 11 | c[24] >>> 21, pt = c[24] << 11 | c[25] >>> 21, Ot = c[34] << 15 | c[35] >>> 17, yr = c[35] << 15 | c[34] >>> 17, Et = c[45] << 29 | c[44] >>> 3, cr = c[44] << 29 | c[45] >>> 3, ur = c[6] << 28 | c[7] >>> 4, yt = c[7] << 28 | c[6] >>> 4, Dt = c[17] << 23 | c[16] >>> 9, We = c[16] << 23 | c[17] >>> 9, Pt = c[26] << 25 | c[27] >>> 7, pr = c[27] << 25 | c[26] >>> 7, mt = c[36] << 21 | c[37] >>> 11, fr = c[37] << 21 | c[36] >>> 11, Lt = c[47] << 24 | c[46] >>> 8, Ft = c[46] << 24 | c[47] >>> 8, It = c[8] << 27 | c[9] >>> 5, gr = c[9] << 27 | c[8] >>> 5, bt = c[18] << 20 | c[19] >>> 12, hr = c[19] << 20 | c[18] >>> 12, Ke = c[29] << 7 | c[28] >>> 25, Je = c[28] << 7 | c[29] >>> 25, St = c[38] << 8 | c[39] >>> 24, kt = c[39] << 8 | c[38] >>> 24, gt = c[48] << 14 | c[49] >>> 18, vt = c[49] << 14 | c[48] >>> 18, c[0] = lt ^ ~ct & ar, c[1] = or ^ ~dt & pt, c[10] = ur ^ ~bt & wt, c[11] = yt ^ ~hr & xt, c[20] = At ^ ~dr & Pt, c[21] = Mt ^ ~Nt & pr, c[30] = It ^ ~Tt & vr, c[31] = gr ^ ~Ct & Bt, c[40] = br ^ ~Dt & Ke, c[41] = Ut ^ ~We & Je, c[2] = ct ^ ~ar & mt, c[3] = dt ^ ~pt & fr, c[12] = bt ^ ~wt & lr, c[13] = hr ^ ~xt & _t, c[22] = dr ^ ~Pt & St, c[23] = Nt ^ ~pr & kt, c[32] = Tt ^ ~vr & Ot, c[33] = Ct ^ ~Bt & yr, c[42] = Dt ^ ~Ke & Xe, c[43] = We ^ ~Je & Ze, c[4] = ar ^ ~mt & gt, c[5] = pt ^ ~fr & vt, c[14] = wt ^ ~lr & Et, c[15] = xt ^ ~_t & cr, c[24] = Pt ^ ~St & mr, c[25] = pr ^ ~kt & Rt, c[34] = vr ^ ~Ot & Lt, c[35] = Bt ^ ~yr & Ft, c[44] = Ke ^ ~Xe & Ye, c[45] = Je ^ ~Ze & Qe, c[6] = mt ^ ~gt & lt, c[7] = fr ^ ~vt & or, c[16] = lr ^ ~Et & ur, c[17] = _t ^ ~cr & yt, c[26] = St ^ ~mr & At, c[27] = kt ^ ~Rt & Mt, c[36] = Ot ^ ~Lt & It, c[37] = yr ^ ~Ft & gr, c[46] = Xe ^ ~Ye & br, c[47] = Ze ^ ~Qe & Ut, c[8] = gt ^ ~lt & ct, c[9] = vt ^ ~or & dt, c[18] = Et ^ ~ur & bt, c[19] = cr ^ ~yt & hr, c[28] = mr ^ ~At & dr, c[29] = Rt ^ ~Mt & Nt, c[38] = Lt ^ ~It & Tt, c[39] = Ft ^ ~gr & Ct, c[48] = Ye ^ ~br & Dt, c[49] = Qe ^ ~Ut & We, c[0] ^= I[T], c[1] ^= I[T + 1];
     };
     if (u)
       n.exports = p;
@@ -4918,10 +4918,10 @@ Ee.prototype._prepareBlock = function(t, e) {
 };
 Ee.prototype._update = function(t, e) {
   this._prepareBlock(t, e);
-  var r = this.W, i = this.h[0], s = this.h[1], o = this.h[2], u = this.h[3], l = this.h[4], d = this.h[5], g = this.h[6], w = this.h[7], A = this.h[8], P = this.h[9], N = this.h[10], R = this.h[11], H = this.h[12], I = this.h[13], L = this.h[14], j = this.h[15];
+  var r = this.W, i = this.h[0], s = this.h[1], o = this.h[2], u = this.h[3], l = this.h[4], d = this.h[5], g = this.h[6], w = this.h[7], A = this.h[8], P = this.h[9], N = this.h[10], I = this.h[11], H = this.h[12], R = this.h[13], L = this.h[14], j = this.h[15];
   xu(this.k.length === r.length);
   for (var J = 0; J < r.length; J += 2) {
-    var Q = L, ft = j, Kt = Cu(A, P), Ht = Bu(A, P), st = Pu(A, P, N, R, H), ce = Su(A, P, N, R, H, I), x = this.k[J], a = this.k[J + 1], h = r[J], p = r[J + 1], m = Au(
+    var Q = L, ft = j, Kt = Cu(A, P), Ht = Bu(A, P), st = Pu(A, P, N, I, H), ce = Su(A, P, N, I, H, R), x = this.k[J], a = this.k[J + 1], h = r[J], p = r[J + 1], m = Au(
       Q,
       ft,
       Kt,
@@ -4946,9 +4946,9 @@ Ee.prototype._update = function(t, e) {
     );
     Q = Iu(i, s), ft = Tu(i, s), Kt = ku(i, s, o, u, l), Ht = Ru(i, s, o, u, l, d);
     var _ = si(Q, ft, Kt, Ht), E = oi(Q, ft, Kt, Ht);
-    L = H, j = I, H = N, I = R, N = A, R = P, A = si(g, w, m, y), P = oi(w, w, m, y), g = l, w = d, l = o, d = u, o = i, u = s, i = si(m, y, _, E), s = oi(m, y, _, E);
+    L = H, j = R, H = N, R = I, N = A, I = P, A = si(g, w, m, y), P = oi(w, w, m, y), g = l, w = d, l = o, d = u, o = i, u = s, i = si(m, y, _, E), s = oi(m, y, _, E);
   }
-  tr(this.h, 0, i, s), tr(this.h, 2, o, u), tr(this.h, 4, l, d), tr(this.h, 6, g, w), tr(this.h, 8, A, P), tr(this.h, 10, N, R), tr(this.h, 12, H, I), tr(this.h, 14, L, j);
+  tr(this.h, 0, i, s), tr(this.h, 2, o, u), tr(this.h, 4, l, d), tr(this.h, 6, g, w), tr(this.h, 8, A, P), tr(this.h, 10, N, I), tr(this.h, 12, H, R), tr(this.h, 14, L, j);
 };
 Ee.prototype._digest = function(t) {
   return t === "hex" ? oe.toHex32(this.h, "big") : oe.split32(this.h, "big");
@@ -5498,8 +5498,8 @@ var _e = qr(function(n, t) {
     var w = new Array(Math.max(l.bitLength(), g) + 1);
     w.fill(0);
     for (var A = 1 << d + 1, P = l.clone(), N = 0; N < w.length; N++) {
-      var R, H = P.andln(A - 1);
-      P.isOdd() ? (H > (A >> 1) - 1 ? R = (A >> 1) - H : R = H, P.isubn(R)) : R = 0, w[N] = R, P.iushrn(1);
+      var I, H = P.andln(A - 1);
+      P.isOdd() ? (H > (A >> 1) - 1 ? I = (A >> 1) - H : I = H, P.isubn(I)) : I = 0, w[N] = I, P.iushrn(1);
     }
     return w;
   }
@@ -5511,12 +5511,12 @@ var _e = qr(function(n, t) {
     ];
     l = l.clone(), d = d.clone();
     for (var w = 0, A = 0, P; l.cmpn(-w) > 0 || d.cmpn(-A) > 0; ) {
-      var N = l.andln(3) + w & 3, R = d.andln(3) + A & 3;
-      N === 3 && (N = -1), R === 3 && (R = -1);
+      var N = l.andln(3) + w & 3, I = d.andln(3) + A & 3;
+      N === 3 && (N = -1), I === 3 && (I = -1);
       var H;
-      N & 1 ? (P = l.andln(7) + w & 7, (P === 3 || P === 5) && R === 2 ? H = -N : H = N) : H = 0, g[0].push(H);
-      var I;
-      R & 1 ? (P = d.andln(7) + A & 7, (P === 3 || P === 5) && N === 2 ? I = -R : I = R) : I = 0, g[1].push(I), 2 * w === H + 1 && (w = 1 - w), 2 * A === I + 1 && (A = 1 - A), l.iushrn(1), d.iushrn(1);
+      N & 1 ? (P = l.andln(7) + w & 7, (P === 3 || P === 5) && I === 2 ? H = -N : H = N) : H = 0, g[0].push(H);
+      var R;
+      I & 1 ? (P = d.andln(7) + A & 7, (P === 3 || P === 5) && N === 2 ? R = -I : R = I) : R = 0, g[1].push(R), 2 * w === H + 1 && (w = 1 - w), 2 * A === R + 1 && (A = 1 - A), l.iushrn(1), d.iushrn(1);
     }
     return g;
   }
@@ -5588,9 +5588,9 @@ ir.prototype._wnafMulAdd = function(t, e, r, i, s) {
     o[g] = P.wnd, u[g] = P.points;
   }
   for (g = i - 1; g >= 1; g -= 2) {
-    var N = g - 1, R = g;
-    if (o[N] !== 1 || o[R] !== 1) {
-      l[N] = Mn(r[N], o[N], this._bitLength), l[R] = Mn(r[R], o[R], this._bitLength), d = Math.max(l[N].length, d), d = Math.max(l[R].length, d);
+    var N = g - 1, I = g;
+    if (o[N] !== 1 || o[I] !== 1) {
+      l[N] = Mn(r[N], o[N], this._bitLength), l[I] = Mn(r[I], o[I], this._bitLength), d = Math.max(l[N].length, d), d = Math.max(l[I].length, d);
       continue;
     }
     var H = [
@@ -5600,11 +5600,11 @@ ir.prototype._wnafMulAdd = function(t, e, r, i, s) {
       /* 3 */
       null,
       /* 5 */
-      e[R]
+      e[I]
       /* 7 */
     ];
-    e[N].y.cmp(e[R].y) === 0 ? (H[1] = e[N].add(e[R]), H[2] = e[N].toJ().mixedAdd(e[R].neg())) : e[N].y.cmp(e[R].y.redNeg()) === 0 ? (H[1] = e[N].toJ().mixedAdd(e[R]), H[2] = e[N].add(e[R].neg())) : (H[1] = e[N].toJ().mixedAdd(e[R]), H[2] = e[N].toJ().mixedAdd(e[R].neg()));
-    var I = [
+    e[N].y.cmp(e[I].y) === 0 ? (H[1] = e[N].add(e[I]), H[2] = e[N].toJ().mixedAdd(e[I].neg())) : e[N].y.cmp(e[I].y.redNeg()) === 0 ? (H[1] = e[N].toJ().mixedAdd(e[I]), H[2] = e[N].add(e[I].neg())) : (H[1] = e[N].toJ().mixedAdd(e[I]), H[2] = e[N].toJ().mixedAdd(e[I].neg()));
+    var R = [
       -3,
       /* -1 -1 */
       -1,
@@ -5623,10 +5623,10 @@ ir.prototype._wnafMulAdd = function(t, e, r, i, s) {
       /* 1 0 */
       3
       /* 1 1 */
-    ], L = Zu(r[N], r[R]);
-    for (d = Math.max(L[0].length, d), l[N] = new Array(d), l[R] = new Array(d), w = 0; w < d; w++) {
+    ], L = Zu(r[N], r[I]);
+    for (d = Math.max(L[0].length, d), l[N] = new Array(d), l[I] = new Array(d), w = 0; w < d; w++) {
       var j = L[0][w] | 0, J = L[1][w] | 0;
-      l[N][w] = I[(j + 1) * 3 + (J + 1)], l[R][w] = 0, u[N] = H;
+      l[N][w] = R[(j + 1) * 3 + (J + 1)], l[I][w] = 0, u[N] = H;
     }
   }
   var Q = this.jpoint(null, null, null), ft = this._wnafT4;
@@ -5788,17 +5788,17 @@ ve.prototype._getEndoRoots = function(t) {
   return [o, u];
 };
 ve.prototype._getEndoBasis = function(t) {
-  for (var e = this.n.ushrn(Math.floor(this.n.bitLength() / 2)), r = t, i = this.n.clone(), s = new Y(1), o = new Y(0), u = new Y(0), l = new Y(1), d, g, w, A, P, N, R, H = 0, I, L; r.cmpn(0) !== 0; ) {
+  for (var e = this.n.ushrn(Math.floor(this.n.bitLength() / 2)), r = t, i = this.n.clone(), s = new Y(1), o = new Y(0), u = new Y(0), l = new Y(1), d, g, w, A, P, N, I, H = 0, R, L; r.cmpn(0) !== 0; ) {
     var j = i.div(r);
-    I = i.sub(j.mul(r)), L = u.sub(j.mul(s));
+    R = i.sub(j.mul(r)), L = u.sub(j.mul(s));
     var J = l.sub(j.mul(o));
-    if (!w && I.cmp(e) < 0)
-      d = R.neg(), g = s, w = I.neg(), A = L;
+    if (!w && R.cmp(e) < 0)
+      d = I.neg(), g = s, w = R.neg(), A = L;
     else if (w && ++H === 2)
       break;
-    R = I, i = r, r = I, u = s, s = L, l = o, o = J;
+    I = R, i = r, r = R, u = s, s = L, l = o, o = J;
   }
-  P = I.neg(), N = L;
+  P = R.neg(), N = L;
   var Q = w.sqr().add(A.sqr()), ft = P.sqr().add(N.sqr());
   return ft.cmp(Q) >= 0 && (P = d, N = g), w.negative && (w = w.neg(), A = A.neg()), P.negative && (P = P.neg(), N = N.neg()), [
     { a: w, b: A },
@@ -6002,8 +6002,8 @@ Qt.prototype.add = function(t) {
   var e = t.z.redSqr(), r = this.z.redSqr(), i = this.x.redMul(e), s = t.x.redMul(r), o = this.y.redMul(e.redMul(t.z)), u = t.y.redMul(r.redMul(this.z)), l = i.redSub(s), d = o.redSub(u);
   if (l.cmpn(0) === 0)
     return d.cmpn(0) !== 0 ? this.curve.jpoint(null, null, null) : this.dbl();
-  var g = l.redSqr(), w = g.redMul(l), A = i.redMul(g), P = d.redSqr().redIAdd(w).redISub(A).redISub(A), N = d.redMul(A.redISub(P)).redISub(o.redMul(w)), R = this.z.redMul(t.z).redMul(l);
-  return this.curve.jpoint(P, N, R);
+  var g = l.redSqr(), w = g.redMul(l), A = i.redMul(g), P = d.redSqr().redIAdd(w).redISub(A).redISub(A), N = d.redMul(A.redISub(P)).redISub(o.redMul(w)), I = this.z.redMul(t.z).redMul(l);
+  return this.curve.jpoint(P, N, I);
 };
 Qt.prototype.mixedAdd = function(t) {
   if (this.isInfinity())
@@ -6032,7 +6032,7 @@ Qt.prototype.dblp = function(t) {
   }
   var i = this.curve.a, s = this.curve.tinv, o = this.x, u = this.y, l = this.z, d = l.redSqr().redSqr(), g = u.redAdd(u);
   for (e = 0; e < t; e++) {
-    var w = o.redSqr(), A = g.redSqr(), P = A.redSqr(), N = w.redAdd(w).redIAdd(w).redIAdd(i.redMul(d)), R = o.redMul(A), H = N.redSqr().redISub(R.redAdd(R)), I = R.redISub(H), L = N.redMul(I);
+    var w = o.redSqr(), A = g.redSqr(), P = A.redSqr(), N = w.redAdd(w).redIAdd(w).redIAdd(i.redMul(d)), I = o.redMul(A), H = N.redSqr().redISub(I.redAdd(I)), R = I.redISub(H), L = N.redMul(R);
     L = L.redIAdd(L).redISub(P);
     var j = g.redMul(l);
     e + 1 < t && (d = d.redMul(P)), o = H, l = j, g = L;
@@ -6052,8 +6052,8 @@ Qt.prototype._zeroDbl = function() {
   } else {
     var w = this.x.redSqr(), A = this.y.redSqr(), P = A.redSqr(), N = this.x.redAdd(A).redSqr().redISub(w).redISub(P);
     N = N.redIAdd(N);
-    var R = w.redAdd(w).redIAdd(w), H = R.redSqr(), I = P.redIAdd(P);
-    I = I.redIAdd(I), I = I.redIAdd(I), t = H.redISub(N).redISub(N), e = R.redMul(N.redISub(t)).redISub(I), r = this.y.redMul(this.z), r = r.redIAdd(r);
+    var I = w.redAdd(w).redIAdd(w), H = I.redSqr(), R = P.redIAdd(P);
+    R = R.redIAdd(R), R = R.redIAdd(R), t = H.redISub(N).redISub(N), e = I.redMul(N.redISub(t)).redISub(R), r = this.y.redMul(this.z), r = r.redIAdd(r);
   }
   return this.curve.jpoint(t, e, r);
 };
@@ -6069,12 +6069,12 @@ Qt.prototype._threeDbl = function() {
   } else {
     var w = this.z.redSqr(), A = this.y.redSqr(), P = this.x.redMul(A), N = this.x.redSub(w).redMul(this.x.redAdd(w));
     N = N.redAdd(N).redIAdd(N);
-    var R = P.redIAdd(P);
-    R = R.redIAdd(R);
-    var H = R.redAdd(R);
+    var I = P.redIAdd(P);
+    I = I.redIAdd(I);
+    var H = I.redAdd(I);
     t = N.redSqr().redISub(H), r = this.y.redAdd(this.z).redSqr().redISub(A).redISub(w);
-    var I = A.redSqr();
-    I = I.redIAdd(I), I = I.redIAdd(I), I = I.redIAdd(I), e = N.redMul(R.redISub(t)).redISub(I);
+    var R = A.redSqr();
+    R = R.redIAdd(R), R = R.redIAdd(R), R = R.redIAdd(R), e = N.redMul(I.redISub(t)).redISub(R);
   }
   return this.curve.jpoint(t, e, r);
 };
@@ -6083,8 +6083,8 @@ Qt.prototype._dbl = function() {
   d = d.redIAdd(d);
   var g = d.redMul(u), w = l.redSqr().redISub(g.redAdd(g)), A = g.redISub(w), P = u.redSqr();
   P = P.redIAdd(P), P = P.redIAdd(P), P = P.redIAdd(P);
-  var N = l.redMul(A).redISub(P), R = r.redAdd(r).redMul(i);
-  return this.curve.jpoint(w, N, R);
+  var N = l.redMul(A).redISub(P), I = r.redAdd(r).redMul(i);
+  return this.curve.jpoint(w, N, I);
 };
 Qt.prototype.trpl = function() {
   if (!this.curve.zeroA)
@@ -6511,10 +6511,10 @@ me.prototype.sign = function(t, e, r, i) {
       if (!A.isInfinity()) {
         var P = A.getX(), N = P.umod(this.n);
         if (N.cmpn(0) !== 0) {
-          var R = w.invm(this.n).mul(N.mul(e.getPrivate()).iadd(t));
-          if (R = R.umod(this.n), R.cmpn(0) !== 0) {
+          var I = w.invm(this.n).mul(N.mul(e.getPrivate()).iadd(t));
+          if (I = I.umod(this.n), I.cmpn(0) !== 0) {
             var H = (A.getY().isOdd() ? 1 : 0) | (P.cmp(N) !== 0 ? 2 : 0);
-            return i.canonical && R.cmp(this.nh) > 0 && (R = this.n.sub(R), H ^= 1), new Fn({ r: N, s: R, recoveryParam: H });
+            return i.canonical && I.cmp(this.nh) > 0 && (I = this.n.sub(I), H ^= 1), new Fn({ r: N, s: I, recoveryParam: H });
           }
         }
       }
@@ -7588,14 +7588,14 @@ function Ch(n, t, e) {
     l = n;
   else if (typeof n == "object") {
     if ((n == null || n.url == null) && we.throwArgumentError("missing URL", "connection.url", n), l = n.url, typeof n.timeout == "number" && n.timeout > 0 && (w = n.timeout), n.headers)
-      for (const I in n.headers)
-        u[I.toLowerCase()] = { key: I, value: String(n.headers[I]) }, ["if-none-match", "if-modified-since"].indexOf(I.toLowerCase()) >= 0 && (g = !0);
+      for (const R in n.headers)
+        u[R.toLowerCase()] = { key: R, value: String(n.headers[R]) }, ["if-none-match", "if-modified-since"].indexOf(R.toLowerCase()) >= 0 && (g = !0);
     if (d.allowGzip = !!n.allowGzip, n.user != null && n.password != null) {
       l.substring(0, 6) !== "https:" && n.allowInsecureAuthentication !== !0 && we.throwError("basic authentication requires a secure https url", M.errors.INVALID_ARGUMENT, { argument: "url", url: l, user: n.user, password: "[REDACTED]" });
-      const I = n.user + ":" + n.password;
+      const R = n.user + ":" + n.password;
       u.authorization = {
         key: "Authorization",
-        value: "Basic " + Sh(Ce(I))
+        value: "Basic " + Sh(Ce(R))
       };
     }
     n.skipFetchSetup != null && (d.skipFetchSetup = !!n.skipFetchSetup);
@@ -7603,18 +7603,18 @@ function Ch(n, t, e) {
   const A = new RegExp("^data:([a-z0-9-]+/[a-z0-9-]+);base64,(.*)$", "i"), P = l ? l.match(A) : null;
   if (P)
     try {
-      const I = {
+      const R = {
         statusCode: 200,
         statusMessage: "OK",
         headers: { "content-type": P[1] },
         body: Ph(P[2])
       };
-      let L = I.body;
-      return e && (L = e(I.body, I)), Promise.resolve(L);
-    } catch (I) {
+      let L = R.body;
+      return e && (L = e(R.body, R)), Promise.resolve(L);
+    } catch (R) {
       we.throwError("processing response error", M.errors.SERVER_ERROR, {
         body: er(P[1], P[2]),
-        error: I,
+        error: R,
         requestBody: null,
         requestMethod: "GET",
         url: l
@@ -7622,15 +7622,15 @@ function Ch(n, t, e) {
     }
   t && (d.method = "POST", d.body = t, u["content-type"] == null && (u["content-type"] = { key: "Content-Type", value: "application/octet-stream" }), u["content-length"] == null && (u["content-length"] = { key: "Content-Length", value: String(t.length) }));
   const N = {};
-  Object.keys(u).forEach((I) => {
-    const L = u[I];
+  Object.keys(u).forEach((R) => {
+    const L = u[R];
     N[L.key] = L.value;
   }), d.headers = N;
-  const R = function() {
-    let I = null;
+  const I = function() {
+    let R = null;
     return { promise: new Promise(function(J, Q) {
-      w && (I = setTimeout(() => {
-        I != null && (I = null, Q(we.makeError("timeout", M.errors.TIMEOUT, {
+      w && (R = setTimeout(() => {
+        R != null && (R = null, Q(we.makeError("timeout", M.errors.TIMEOUT, {
           requestBody: er(d.body, N["content-type"]),
           requestMethod: d.method,
           timeout: w,
@@ -7638,14 +7638,14 @@ function Ch(n, t, e) {
         })));
       }, w));
     }), cancel: function() {
-      I != null && (clearTimeout(I), I = null);
+      R != null && (clearTimeout(R), R = null);
     } };
   }(), H = function() {
     return Th(this, void 0, void 0, function* () {
-      for (let I = 0; I < r; I++) {
+      for (let R = 0; R < r; R++) {
         let L = null;
         try {
-          if (L = yield Ih(l, d), I < r) {
+          if (L = yield Ih(l, d), R < r) {
             if (L.statusCode === 301 || L.statusCode === 302) {
               const J = L.headers.location || "";
               if (d.method === "GET" && J.match(/^https:/)) {
@@ -7654,16 +7654,16 @@ function Ch(n, t, e) {
               }
             } else if (L.statusCode === 429) {
               let J = !0;
-              if (i && (J = yield i(I, l)), J) {
+              if (i && (J = yield i(R, l)), J) {
                 let Q = 0;
                 const ft = L.headers["retry-after"];
-                typeof ft == "string" && ft.match(/^[1-9][0-9]*$/) ? Q = parseInt(ft) * 1e3 : Q = s * parseInt(String(Math.random() * Math.pow(2, I))), yield Ms(Q);
+                typeof ft == "string" && ft.match(/^[1-9][0-9]*$/) ? Q = parseInt(ft) * 1e3 : Q = s * parseInt(String(Math.random() * Math.pow(2, R))), yield Ms(Q);
                 continue;
               }
             }
           }
         } catch (J) {
-          L = J.response, L == null && (R.cancel(), we.throwError("missing response", M.errors.SERVER_ERROR, {
+          L = J.response, L == null && (I.cancel(), we.throwError("missing response", M.errors.SERVER_ERROR, {
             requestBody: er(d.body, N["content-type"]),
             requestMethod: d.method,
             serverError: J,
@@ -7671,7 +7671,7 @@ function Ch(n, t, e) {
           }));
         }
         let j = L.body;
-        if (g && L.statusCode === 304 ? j = null : !o && (L.statusCode < 200 || L.statusCode >= 300) && (R.cancel(), we.throwError("bad response", M.errors.SERVER_ERROR, {
+        if (g && L.statusCode === 304 ? j = null : !o && (L.statusCode < 200 || L.statusCode >= 300) && (I.cancel(), we.throwError("bad response", M.errors.SERVER_ERROR, {
           status: L.statusCode,
           headers: L.headers,
           body: er(j, L.headers ? L.headers["content-type"] : null),
@@ -7681,17 +7681,17 @@ function Ch(n, t, e) {
         })), e)
           try {
             const J = yield e(j, L);
-            return R.cancel(), J;
+            return I.cancel(), J;
           } catch (J) {
-            if (J.throttleRetry && I < r) {
+            if (J.throttleRetry && R < r) {
               let Q = !0;
-              if (i && (Q = yield i(I, l)), Q) {
-                const ft = s * parseInt(String(Math.random() * Math.pow(2, I)));
+              if (i && (Q = yield i(R, l)), Q) {
+                const ft = s * parseInt(String(Math.random() * Math.pow(2, R)));
                 yield Ms(ft);
                 continue;
               }
             }
-            R.cancel(), we.throwError("processing response error", M.errors.SERVER_ERROR, {
+            I.cancel(), we.throwError("processing response error", M.errors.SERVER_ERROR, {
               body: er(j, L.headers ? L.headers["content-type"] : null),
               error: J,
               requestBody: er(d.body, N["content-type"]),
@@ -7699,7 +7699,7 @@ function Ch(n, t, e) {
               url: l
             });
           }
-        return R.cancel(), j;
+        return I.cancel(), j;
       }
       return we.throwError("failed response", M.errors.SERVER_ERROR, {
         requestBody: er(d.body, N["content-type"]),
@@ -7708,7 +7708,7 @@ function Ch(n, t, e) {
       });
     });
   }();
-  return Promise.race([R.promise, H]);
+  return Promise.race([I.promise, H]);
 }
 function $i(n, t, e) {
   let r = (s, o) => {
@@ -8460,21 +8460,21 @@ class Cs {
                 return null;
               const d = yield this.provider.formatter.address(l[0]), g = jt(U.from(l[1]).toHexString(), 32);
               if (s === "erc721") {
-                const R = this.provider.formatter.callAddress(yield this.provider.call({
+                const I = this.provider.formatter.callAddress(yield this.provider.call({
                   to: d,
                   data: se(["0x6352211e", g])
                 }));
-                if (u !== R)
+                if (u !== I)
                   return null;
-                t.push({ type: "owner", content: R });
+                t.push({ type: "owner", content: I });
               } else if (s === "erc1155") {
-                const R = U.from(yield this.provider.call({
+                const I = U.from(yield this.provider.call({
                   to: d,
                   data: se(["0x00fdd58e", jt(u, 32), g])
                 }));
-                if (R.isZero())
+                if (I.isZero())
                   return null;
-                t.push({ type: "balance", content: R.toString() });
+                t.push({ type: "balance", content: I.toString() });
               }
               const w = {
                 to: this.provider.formatter.address(l[0]),
@@ -8793,23 +8793,23 @@ class Jh extends Bn {
           this.removeListener(t, w);
         }), i) {
           let A = i.startBlock, P = null;
-          const N = (R) => X(this, void 0, void 0, function* () {
+          const N = (I) => X(this, void 0, void 0, function* () {
             d || (yield ks(1e3), this.getTransactionCount(i.from).then((H) => X(this, void 0, void 0, function* () {
               if (!d) {
                 if (H <= i.nonce)
-                  A = R;
+                  A = I;
                 else {
                   {
-                    const I = yield this.getTransaction(t);
-                    if (I && I.blockNumber != null)
+                    const R = yield this.getTransaction(t);
+                    if (R && R.blockNumber != null)
                       return;
                   }
-                  for (P == null && (P = A - 3, P < i.startBlock && (P = i.startBlock)); P <= R; ) {
+                  for (P == null && (P = A - 3, P < i.startBlock && (P = i.startBlock)); P <= I; ) {
                     if (d)
                       return;
-                    const I = yield this.getBlockWithTransactions(P);
-                    for (let L = 0; L < I.transactions.length; L++) {
-                      const j = I.transactions[L];
+                    const R = yield this.getBlockWithTransactions(P);
+                    for (let L = 0; L < R.transactions.length; L++) {
+                      const j = R.transactions[L];
                       if (j.hash === t)
                         return;
                       if (j.from === i.from && j.nonce === i.nonce) {
@@ -9032,8 +9032,8 @@ class Jh extends Bn {
             data: s
           });
           const l = [], d = U.from(te(o, 32, 64)).toNumber(), g = U.from(te(o, d, d + 32)).toNumber(), w = te(o, d + 32);
-          for (let I = 0; I < g; I++) {
-            const L = xn(w, I * 32);
+          for (let R = 0; R < g; R++) {
+            const L = xn(w, R * 32);
             L == null && et.throwError("CCIP Read contained corrupt URL string", M.errors.CALL_EXCEPTION, {
               name: "OffchainLookup",
               signature: "OffchainLookup(address,string[],bytes,bytes4,bytes)",
@@ -9048,8 +9048,8 @@ class Jh extends Bn {
             transaction: t,
             data: s
           });
-          const P = te(o, 96, 100), N = en(o, 128), R = yield this.ccipReadFetch(t, A, l);
-          R == null && et.throwError("CCIP Read disabled or provided no URLs", M.errors.CALL_EXCEPTION, {
+          const P = te(o, 96, 100), N = en(o, 128), I = yield this.ccipReadFetch(t, A, l);
+          I == null && et.throwError("CCIP Read disabled or provided no URLs", M.errors.CALL_EXCEPTION, {
             name: "OffchainLookup",
             signature: "OffchainLookup(address,string[],bytes,bytes4,bytes)",
             transaction: t,
@@ -9057,7 +9057,7 @@ class Jh extends Bn {
           });
           const H = {
             to: i,
-            data: se([P, qo([R, N])])
+            data: se([P, qo([I, N])])
           };
           return this._call(H, e, r + 1);
         } catch (o) {
@@ -10793,25 +10793,25 @@ function fl({
             P(""), console.log("No authorized accounts found!");
         }
       } catch (L) {
-        console.log(L);
+        console.log(L, "error");
       }
     })();
   }, [A, Fs]);
-  const N = (I, L, j) => {
-    console.log(I, L, "--testing"), window.ethereum && s && u && (u.transferWIRON(
+  const N = (R, L, j) => {
+    console.log(R, L, "--testing"), window.ethereum && s && u && R && L && (u.transferWIRON(
       "0x664b8b9892b7560b356ef0f8d44cbd1f6628e388",
-      I,
+      R,
       L,
       j.productId,
       j.name,
       j.price,
       j.qty
     ), console.log("Amount sent"));
-  }, { className: R, ...H } = i;
+  }, { className: I, ...H } = i;
   return /* @__PURE__ */ jo(
     "button",
     {
-      className: `${R}`,
+      className: `${I}`,
       ...H,
       onClick: () => N(t, d, r),
       style: {

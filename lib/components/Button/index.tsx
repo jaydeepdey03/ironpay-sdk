@@ -102,7 +102,7 @@ export function IronfishButton({
           }
         }
       } catch (error) {
-        console.log(error);
+        console.log(error, "error");
       }
     };
     checkIfWalletIsConnected();
@@ -110,7 +110,13 @@ export function IronfishButton({
 
   const transferWIRON = (amount: Number, address: string, product: Product) => {
     console.log(amount, address, "--testing");
-    if ((window as any).ethereum && contract && merchantContract) {
+    if (
+      (window as any).ethereum &&
+      contract &&
+      merchantContract &&
+      amount &&
+      address
+    ) {
       merchantContract.transferWIRON(
         "0x664b8b9892b7560b356ef0f8d44cbd1f6628e388",
         amount,

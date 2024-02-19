@@ -24,11 +24,11 @@ function App() {
           height: "100vh",
         }}
       >
-        {/* <button onClick={connectWallet}>connect wallet</button> */}
+        <button onClick={connectWallet}>connect wallet</button>
         <IronfishButton
           text="Pay with Iron"
           amount={100000000}
-          id="023ce65e-69d5-49b0-9199-01cfa340d2d9"
+          id="e633a277-be5d-4c93-9e69-d9fa502e6179"
           product={{
             name: "Ironfish",
             price: 100000000,
