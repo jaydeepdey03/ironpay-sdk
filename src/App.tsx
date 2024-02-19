@@ -1,5 +1,5 @@
 import {IronfishButton} from "../lib/main";
-import {AllowAndDepositButton} from "../lib/components/Button";
+import {AllowAndDepositButton, WIronBalance} from "../lib/components/Button";
 import {WithdrawWIRONButton} from "../lib/components/Button";
 import "./App.css";
 
@@ -49,6 +49,8 @@ function App() {
           address="0x10AbbDc83E8e33974650cB897b16250E07979CBa"
           amount="200000000"
         />
+
+        <WIronBalance />
       </div>
     </>
   );

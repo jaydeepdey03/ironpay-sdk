@@ -366,3 +366,89 @@ export function WithdrawWIRONButton({text, address, amount}: Withdraw) {
     </button>
   );
 }
+
+export function WIronBalance() {
+  const [merchantContract, setMerchantContract] = useState<ethers.Contract>();
+
+  const merchantContractAddress = "0xcea3f55B9f65Ac24fBaCBf9516c3f291F9DFd1D6";
+  const [currentAccount, setCurrentAccount] = useState("");
+  const [bal, setBal] = useState(0);
+
+  useEffect(() => {
+    const getContract = async () => {
+      if ((window as any).ethereum) {
+        // Access ethereum here
+        const ethereum = (window as any).ethereum;
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+
+        const merchantContract = new ethers.Contract(
+          merchantContractAddress,
+          merchantABI,
+          signer
+        );
+
+        setMerchantContract(merchantContract);
+      } else {
+        console.error("Ethereum provider not found");
+      }
+    };
+    getContract();
+  }, []);
+
+  useEffect(() => {
+    const checkIfWalletIsConnected = async () => {
+      try {
+        if ((window as any).ethereum) {
+          const ethereum = (window as any).ethereum;
+
+          const accounts = await ethereum.request({method: "eth_accounts"}); //check if there are accounts connected to the site
+          console.log(accounts, "accounts");
+          if (accounts && accounts.length !== 0) {
+            const account = accounts[0];
+            console.log("Found an authorized account:", account);
+            setCurrentAccount(account);
+          } else {
+            setCurrentAccount("");
+            console.log("No authorized accounts found!");
+          }
+        }
+      } catch (error) {
+        console.log(error, "error");
+      }
+    };
+    checkIfWalletIsConnected();
+  }, [currentAccount, contractABI]);
+
+  useEffect(() => {
+    async function balanceWIron() {
+      if (merchantContract) {
+        const bal = await merchantContract.balanceOfWIRON();
+        setBal(Number(bal) / 100000000);
+
+        console.log(Number(bal), "bal");
+      }
+    }
+    balanceWIron();
+  }, [merchantContract]);
+
+  return (
+    <div
+      style={{
+        width: "150px",
+        height: "75px",
+        borderRadius: "10px",
+        border: "2px solid black",
+        boxShadow: "2px 2px 0 0 #000",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "start",
+        justifyContent: "center",
+        padding: "10px",
+      }}
+    >
+      <p style={{fontWeight: "700"}}>Balance</p>
+      <p>{bal} WIRON</p>
+    </div>
+  );
+}
